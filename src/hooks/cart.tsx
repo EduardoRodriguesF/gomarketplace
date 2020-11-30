@@ -86,7 +86,9 @@ const CartProvider: React.FC = ({ children }) => {
         id === p.id ? { ...p, quantity: p.quantity - 1 } : p,
       );
 
-      setProducts(newProducts);
+      const filteredProducts = newProducts.filter(p => p.quantity > 0);
+
+      setProducts(filteredProducts);
 
       await AsyncStorage.setItem(
         '@GoMarketplace:products',
